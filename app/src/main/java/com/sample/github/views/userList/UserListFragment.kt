@@ -10,11 +10,12 @@ import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import com.sample.github.R
 import com.sample.github.databinding.FragmentUserListBinding
-import com.sample.github.domain.UserListItem
+import com.sample.github.network.model.UserListItem
+import com.sample.github.paging.LoadAdapter
+import com.sample.github.paging.UserPagingAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
@@ -41,7 +42,10 @@ class UserListFragment : Fragment() {
         )
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
-        binding.recyclerView.adapter = adapter
+        binding.recyclerView.adapter = adapter.withLoadStateHeaderAndFooter(
+            header = LoadAdapter(),
+            footer = LoadAdapter()
+        )
 
         return binding.root
     }

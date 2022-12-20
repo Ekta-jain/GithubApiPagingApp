@@ -1,4 +1,4 @@
-package com.sample.github.domain
+package com.sample.github.network.model
 
 data class Item(
     val avatar_url: String,

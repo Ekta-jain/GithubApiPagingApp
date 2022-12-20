@@ -14,7 +14,8 @@
         android:theme="@style/Theme.Main">
         <activity
             android:name="com.sample.github.MainActivity"
-            android:exported="true">
+            android:exported="true"
+           >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

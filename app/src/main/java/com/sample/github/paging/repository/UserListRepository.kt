@@ -1,4 +1,4 @@
-package com.sample.github.repository
+package com.sample.github.paging.repository
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
@@ -12,7 +12,8 @@ class UserListRepository @Inject constructor(
 ) {
   //suspend fun getUserList(query: String) = githubService.getUserList(query)
    fun getUserList(query: String) = Pager(
-      config = PagingConfig(pageSize = 20, maxSize = 100),
+      //pageSize --how much items to be load in advance
+      config = PagingConfig(pageSize = 5, maxSize = 100),
       pagingSourceFactory = {UserPagingSource(githubService)}
   ).liveData
 

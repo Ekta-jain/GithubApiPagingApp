@@ -7,9 +7,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
 
-import com.sample.github.domain.Item
-import com.sample.github.domain.UserListItem
-import com.sample.github.repository.UserListRepository
+import com.sample.github.network.model.UserListItem
+import com.sample.github.paging.repository.UserListRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*

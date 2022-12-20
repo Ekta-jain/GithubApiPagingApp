@@ -1,3 +1,4 @@
+/*
 package com.sample.github.views.userList
 
 import android.os.Bundle
@@ -13,7 +14,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.sample.github.R
 import com.sample.github.databinding.FragmentUserListBinding
-import com.sample.github.domain.UserListItem
+import com.sample.github.network.model.UserListItem
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
@@ -176,9 +177,11 @@ class UserListFragmentV2 : Fragment() {
 
     fun callingUserList() {
         //Observe on viewmodel for data
-        /*viewModel.data.observe(viewLifecycleOwner) {
+        */
+/*viewModel.data.observe(viewLifecycleOwner) {
             adapter.submitList(it)
-        }*/
+        }*//*
+
 
         var dataFlow = flow<List<UserListItem>> {
             //Fetch user
@@ -229,18 +232,22 @@ class UserListFragmentV2 : Fragment() {
                 Toast.makeText(activity, "123collect" + it, Toast.LENGTH_SHORT).show()
                 adapter.submitList(it)
             }
-            /*viewModel.dataFlow.collect {
+            */
+/*viewModel.dataFlow.collect {
                 Toast.makeText(activity, "" + it, Toast.LENGTH_SHORT).show()
                 //  Log.i("Get","=")
                 adapter.submitList(it)
-            }*/
+            }*//*
+
         }
 
-        /*CoroutineScope(Dispatchers.Main).launch {
+        */
+/*CoroutineScope(Dispatchers.Main).launch {
             dataFlow.collect {
                 // when it is done
             }
-        }*/
+        }*//*
+
 
         binding.searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -264,4 +271,4 @@ class UserListFragmentV2 : Fragment() {
     }
 
 
-}
+}*/

@@ -1,4 +1,4 @@
-package com.sample.github.domain
+package com.sample.github.network.model
 
 data class GithubUserListResponse(
     val incomplete_results: Boolean,

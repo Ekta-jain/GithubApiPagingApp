@@ -1,6 +1,6 @@
 package com.sample.github.network
 
-import com.sample.github.domain.GithubUserListResponse
+import com.sample.github.network.model.GithubUserListResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -14,5 +14,5 @@ interface GithubServiceAPI {
     suspend fun getUserList(@Query("q")query:String): Response<GithubUserListResponse>
 
     @GET("search/users")
-    suspend fun getUserListv2(@Query("q")query:String, @Query("page")page:Int): Response<GithubUserListResponse>
+    suspend fun getUserListv2(@Query("q")query:String, @Query("page")page:Int,@Query("per_page")per_page:Int): Response<GithubUserListResponse>
 }

@@ -1,8 +1,9 @@
 package com.sample.github.paging
 
+import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.sample.github.domain.UserListItem
+import com.sample.github.network.model.UserListItem
 import com.sample.github.network.GithubServiceAPI
 
 class UserPagingSource(val githubServiceAPI: GithubServiceAPI) : PagingSource<Int, UserListItem>() {
@@ -10,10 +11,12 @@ class UserPagingSource(val githubServiceAPI: GithubServiceAPI) : PagingSource<In
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, UserListItem> {
         return try {
             val position = params.key?: 1
-            val response = githubServiceAPI.getUserListv2("Q",position)
+            val response = githubServiceAPI.getUserListv2("Q",position,10)
+            Log.i("ResponseApi","count="+response.body()!!.items.size)
+            Log.i("ResponseApi","Param="+params.key)
             LoadResult.Page(
                 data = response.body()!!.items,
-                prevKey = if(position==1 ) null else -1,
+                prevKey = if(position == 1 ) null else -1,
                 nextKey = if(position == response.body()!!.total_count) null else position+1
             )
         }catch (e: Exception){
